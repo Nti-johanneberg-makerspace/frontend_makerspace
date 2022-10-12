@@ -22,13 +22,12 @@ export default function TableReviews() {
     let time2:string = "0";
     let time_left:number = 0
     let total_time:number =  0 
-    console.log(row.current_print)
+
     if (row.current_print){
     time_left = (row.current_print.current_time / row.current_print.total_time) * 100;
     total_time =  100 - time_left 
     const total:number = row.current_print.total_time;
     const actual_time_left:number = total -row.current_print.current_time
-    console.log(actual_time_left)
     let h:number = Math.floor(row.current_print.total_time  / 3600);
     let m:number = Math.floor(row.current_print.total_time % 3600 / 60);
     let h2:number = Math.floor(actual_time_left  / 3600);
