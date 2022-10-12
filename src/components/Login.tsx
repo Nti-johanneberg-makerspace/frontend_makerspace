@@ -8,6 +8,7 @@ import {
 } from '@mantine/core';
 import GoogleLogin from './LoginFunctional';
 
+
 export default function Login(props: PaperProps) {
   const script = document.createElement('script');
   script.src = 'https://accounts.google.com/gsi/client';
