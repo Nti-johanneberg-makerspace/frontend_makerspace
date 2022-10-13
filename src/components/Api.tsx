@@ -17,6 +17,7 @@ const Api = () => {
       const json = await response.json();
       if (json === "No valid uuid"){
         localStorage.setItem('uuid', "");
+        window.location.reload();
       }
       else{
       console.log("Data successfully fetched");

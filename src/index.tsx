@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <RecoilRoot>
+  <RecoilRoot >
     <MantineProvider
       withGlobalStyles
       withNormalizeCSS
@@ -20,6 +20,7 @@ root.render(
         fontFamily: 'Open Sans, sans serif',
         //spacing: { xs: 15, sm: 20, md: 25, lg: 30, xl: 40 },
         colorScheme: 'dark',
+        spacing: { xs: 15, sm: 20, md: 25, lg: 30, xl: 40 },
         colors:{  'ocean-blue': ['#7AD1DD', '#5FCCDB', '#44CADC', '#2AC9DE', '#1AC2D9', '#11B7CD', '#09ADC3', '#0E99AC', '#128797', '#147885']
       }}}
     >
