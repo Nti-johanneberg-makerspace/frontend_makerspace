@@ -1,7 +1,7 @@
 import { createStyles, Table, Progress, Text, ScrollArea, Center, Group } from '@mantine/core';
 import { textState } from '../App';
 import { useRecoilState, } from 'recoil';
-
+import { tid } from "./calculation/time"
 
 
 
@@ -22,28 +22,14 @@ export default function TableReviews() {
     let time2:string = "0";
     let time_left:number = 0
     let total_time:number =  0 
-    console.log(row.current_print)
+
     if (row.current_print){
     time_left = (row.current_print.current_time / row.current_print.total_time) * 100;
     total_time =  100 - time_left 
     const total:number = row.current_print.total_time;
     const actual_time_left:number = total -row.current_print.current_time
-    console.log(actual_time_left)
-    let h:number = Math.floor(row.current_print.total_time  / 3600);
-    let m:number = Math.floor(row.current_print.total_time % 3600 / 60);
-    let h2:number = Math.floor(actual_time_left  / 3600);
-    let m2:number = Math.floor(actual_time_left % 3600 / 60);
-    console.log(h2,m2)
-    if (String(m).length === 1){
-      time = String(h) + ":0" + String(m)
-    }else{
-      time = String(h) + ":" + String(m)
-    }
-    if (String(m2).length === 1){
-      time2 = String(h2) + ":0" + String(m2)
-    }else{
-      time2 = String(h2) + ":" + String(m2)
-    }}
+    time = tid(row.current_print.total_time)
+    time2 = tid(actual_time_left)}
     if (time2 === "NaN:NaN"){
       time2 = "0:00"
       time = "0:00"
@@ -52,15 +38,15 @@ export default function TableReviews() {
     return (
       <tr key={row.id}>
         <td >
-        <Center>
+          <Center>
             {row.name}
-            </Center>
+          </Center>
         </td>
 
         <td><Center>{row.state}</Center></td>
 
         <td>
-          <Group position="apart">
+          <Group position="apart" spacing={0}>
             <Text size="xs" weight={700}>
               Time_left: {time2}
             </Text>
@@ -92,18 +78,20 @@ export default function TableReviews() {
         <thead>
           <tr>
             <th>
-                <Text align='center'>
+              <Text align='center'>
                 Printer_name
-                </Text>
-                </th>
-            <th>
-            <Text align='center'>
-            Status
-            </Text>
+              </Text>
             </th>
-            <th>            <Text align='center'>
-            Time
-            </Text></th>
+            <th>
+              <Text align='center'>
+                Status
+              </Text>
+            </th>
+            <th>            
+              <Text align='center'>
+                Time
+              </Text>
+            </th>
           </tr>
         </thead>
         <tbody>{rows}</tbody>
