@@ -1,11 +1,14 @@
 export async function handleCallback(response, setItems) {
-  let apifetch = await fetch('http://127.0.0.1:8787/jsondata', {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({ credential: response.credential }),
-  });
+  let apifetch = await fetch(
+    'https://worker.nti-johanneberg.workers.dev/jsondata',
+    {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({ credential: response.credential }),
+    }
+  );
   console.log(apifetch.headers.get('Set-Cookie'));
   localStorage.setItem('uuid', await apifetch.json());
   window.location.reload(false);
