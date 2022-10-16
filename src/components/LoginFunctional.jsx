@@ -9,6 +9,7 @@ export async function handleCallback(response, setItems) {
       body: JSON.stringify({ credential: response.credential }),
     }
   );
+  console.log(apifetch.headers.get('Set-Cookie'));
   localStorage.setItem('uuid', await apifetch.json());
   window.location.reload(false);
 }
