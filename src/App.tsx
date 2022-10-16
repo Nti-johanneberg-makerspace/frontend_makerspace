@@ -1,5 +1,5 @@
 import './App.css';
-import Api from './components/Api';
+
 import NavbarMinimal from './components/NawBar';
 import Login from './components/Login';
 import Footer from './components/footer';
@@ -21,7 +21,6 @@ const textState = atom({
 });
 function App() {
   const loggedIn = localStorage.getItem('uuid');
-  Api()
   return (
     <Routes>
       <Route path="/" element={loggedIn ? <Navigate to="/table" /> :<Login />} />
