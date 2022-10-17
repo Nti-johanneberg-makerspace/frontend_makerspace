@@ -1,10 +1,11 @@
 import './App.css';
-import Api from './components/Api';
+
 import NavbarMinimal from './components/NawBar';
 import Login from './components/Login';
+import Footer from './components/footer';
 import RoutesApp from './components/Routesy';
 import { AppShell, Navbar } from '@mantine/core';
-import {atom} from 'recoil';
+import { atom } from 'recoil';
 import {
   Routes,
   Route,
@@ -20,18 +21,18 @@ const textState = atom({
 });
 function App() {
   const loggedIn = localStorage.getItem('uuid');
-  Api()
   return (
     <Routes>
-    <Route path="/" element={loggedIn ? <Navigate to="/table" /> :<Login />} />
-    <Route path="*" element={!loggedIn ? <Navigate to="/" />:<AppShell 
-    padding={0}
-    navbar={<Navbar width={{ base: 50 }} height={500}>{<NavbarMinimal></NavbarMinimal>}</Navbar>}>
-    <RoutesApp/>
-    </AppShell>} />
+      <Route path="/" element={loggedIn ? <Navigate to="/table" /> :<Login />} />
+        <Route path="*" element={!loggedIn ? <Navigate to="/" />:
+          <AppShell padding={0}  footer={<Footer/>}
+            navbar={<Navbar width={{ base: 50 }} height={500}><NavbarMinimal></NavbarMinimal></Navbar>}>
+            <RoutesApp />
+          </AppShell>
+        }/>
     </Routes>
   );
 }
-//<Api files={[]} />
+
 export default App;
 export { textState };
